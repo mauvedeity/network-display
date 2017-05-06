@@ -25,6 +25,28 @@ Code based on examples from http://www.programminglogic.com/sockets-programming-
 
 #define LISTENPORT 7991
 
+/*
+  oscmd = '/usr/local/bin/dcled -b 0 -p 9 -m "' + this_utter + '"'
+    os.system(oscmd)
+
+*/
+
+int display_gen(char *p_message)
+{
+  char oscmd[1536];	// not too bad because p_message <= 1024
+  char cmd_h[] = "/usr/local/bin/dcled -b 0 -p 9 -e -m  \"";
+  char cmd_t[] = "\"";
+  int sysval;
+
+  strcpy(oscmd, cmd_h);
+  strcat(oscmd, p_message);
+  strcat(oscmd, cmd_t);
+
+  sysval = system(oscmd);
+
+  return(0);
+}
+
 int main() {
   int udpSocket, nBytes;
   char buffer[1024], outbuf[1024];
@@ -54,10 +76,10 @@ int main() {
     strncpy(outbuf, buffer, (size_t)nBytes);	// may not nul-terminate
     outbuf[nBytes] = '\0';			// so nul-terminate yourself
 
-    printf("output: ]%s[\n", outbuf);
+    i = display_gen(outbuf);
   }
 
-  return 0;
+  return(0);
 }
 
 

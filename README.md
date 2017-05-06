@@ -13,7 +13,11 @@ problem is, what to do about it, and why I bothered.
 
 The server code is Linux-specific, sorry about that. I may see if 
 I can make it work on a Mac as well. I don't have a Windows
-development machine, so there won't be a Windows version..
+development machine, so there won't be a Windows version.
+
+The server should probably background itself, but I haven't done
+this yet, because I'm still iterating it and it's kind of handy
+not to have to find the pid and kill it each time. Bleh.
 
 The code should probably do more error-checking. And by 'more', I
 actually mean 'any'. Oh well, like I said, this isn't a good example
