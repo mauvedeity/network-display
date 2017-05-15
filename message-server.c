@@ -43,6 +43,7 @@ int display_gen(char *p_message)
   strcat(oscmd, cmd_t);
 
   sysval = system(oscmd);
+  printf("\n");		// need a CR/LF to separate messages
 
   return(0);
 }
